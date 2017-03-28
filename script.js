@@ -2,14 +2,10 @@ angular.module('myApp', []).controller('todoCtrl', function($scope) {
     $scope.todoList = [];
 
     $scope.todoAdd = function() {
-        if ($scope.todoInput === "") {
-            $scope.ss=1;
-        }else{
-            $scope.todoList.push({todoText:$scope.todoInput, done:true});
-            $scope.todoInput = "";
-        }
-        
+        $scope.todoList.push({name:$scope.todoInput, done:true});
+        $scope.todoInput = "";
     };
+
 
     $scope.remove = function() {
         var oldList = $scope.todoList;
@@ -18,4 +14,16 @@ angular.module('myApp', []).controller('todoCtrl', function($scope) {
             if (!x.done) $scope.todoList.push(x);
         });
     };
+
+    $scope.vis=false;
+    $scope.enableEditor=function(){
+        $scope.vis=true;
+        $scope.todoName=x.name;
+    };
+   $scope.saveVis=function(){
+       // $scope.x.name= $scope.todoName;
+        $scope.vis=false;
+        
+    };
+     
 });

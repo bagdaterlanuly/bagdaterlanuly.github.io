@@ -4,21 +4,25 @@
 <body ng-app="myApp" ng-controller="todoCtrl" align="center" >
 
 
-<form ng-submit="todoAdd()">
-    <input type="text" ng-model="todoInput" size="60" placeholder="Add New" required />
+    <form ng-submit="todoAdd()">
+        <input type="text" ng-model="todoInput" size="60" placeholder="Add New" required />
 
-    <input type="submit" value="Add To List">
-    
-</form>
+        <input type="submit" value="Add To List">
+        
+    </form>
 
-<br>
+    <br>
 
-<div ng-repeat="x in todoList">
-    <input type="checkbox" ng-model="x.done"> <span  ng-bind="x.todoText"></span>
-</div>
+    <div ng-repeat="x in todoList">
+        <input type="checkbox" ng-model="x.done"> <span ng-hide="vis" ng-click="enableEditor()" ng-bind="x.name"></span>
+        <span ng-show="vis">
+            <input type="text" size="30" name="todoName" value="{{x.name}}" required />
+            <button ng-click="saveVis()" >save</button>
+        </span>
+    </div> 
 
-<p><button ng-click="remove()">Remove</button></p>
+    <p><button ng-click="remove()">Remove</button></p>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
